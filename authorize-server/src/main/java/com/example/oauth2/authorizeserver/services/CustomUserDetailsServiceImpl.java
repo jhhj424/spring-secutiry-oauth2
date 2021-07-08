@@ -2,6 +2,7 @@ package com.example.oauth2.authorizeserver.services;
 
 import com.example.oauth2.authorizeserver.models.dtos.CustomUserDetails;
 import com.example.oauth2.authorizeserver.models.entities.UserEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,14 +14,10 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     private final UserService userService;
-
-    @Autowired
-    public CustomUserDetailsServiceImpl(UserService userService) {
-        this.userService = userService;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
